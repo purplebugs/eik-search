@@ -18,18 +18,14 @@ Current status: Ability to spin up Elasticsearch and Kibana quickly
 2. Install [docker-compose](https://docs.docker.com/compose/install/)
 3. Clone this repo
 
+
 ## Steps to take
 
-1. Install the repo locally
-2. Run docker-compose to quickly spin up Elasticsearch and Kibana
+1. Run docker-compose to quickly spin up Elasticsearch and Kibana
 3. Verify Elasticsearch and Kibana are running locally
 4. TODO: Optional: Become familiar with useful Docker commands
 5. TODO: Create node.js app with search
 
-
-### Install the repo locally
-
-```npm install```
 
 ### Run docker-compose to quickly spin up Elasticsearch and Kibana
 
@@ -38,7 +34,6 @@ Spin up a containerised instance of Elasticsearch and Kibana
 ```
 docker-compose up
 ```
-
 
 ### Verify Elasticsearch and Kibana are running locally
 
