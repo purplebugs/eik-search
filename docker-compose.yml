@@ -1,0 +1,42 @@
+### USAGE: See readme
+
+# elasticsearch, kibana, node.js app
+
+version: '3'
+
+volumes:
+  data01:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge
+
+services:
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    container_name: eik-elasticsearch
+    environment:
+      - node.name=eik-elasticsearch
+      - cluster.name=es-docker-cluster
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+
+  kibana: 
+    image: docker.elastic.co/kibana/kibana:7.5.0
+    container_name: eik-kibana
+    ports:
+      - 5601:5601
+    networks:
+      - elastic
