@@ -70,11 +70,11 @@ Navigate to http://localhost:5601/
 
 The web browser should show the home page of Kibana, the UI used for developing and running Elasticsearch queries that will be used in the https://eik.dev/ application for search.
 
-### Put an index of hardcoded data into Elasticsearch for use while developing search
+### Add an index of hardcoded data into Elasticsearch for use while developing search
 
-In Kibana, open the DevTools console in the left hand panel
+In Kibana, open the Dev Tools console in the left hand panel
 
-Copy and paste this command into DevTools and run the command
+Copy and paste this command into Dev Tools and run the command
 
 ```
 POST _bulk
@@ -99,7 +99,7 @@ POST _bulk
 There should be no errors in the response.
 An index of hardcoded data for use while developing search should have been added.
 
-Verify the index by running this command in DevTools:
+Verify the index by running this command in Dev Tools:
 
 ```
 GET anita3/_search
