@@ -139,3 +139,30 @@ GET anita3/_search
 }
 ```
 
+```
+# Return largest file size
+GET anita3/_search
+{ "size": 0, 
+  "aggs": {
+    "largest_file_size": {
+      "max": {
+        "field": "files.size"
+      }
+    }
+  }
+}
+```
+
+```
+# Get statistics on file sizes
+GET anita3/_search
+{ "size": 0, 
+  "aggs": {
+    "file_size_statistics": {
+      "stats": {
+        "field": "files.size"
+      }
+    }
+  }
+}
+```
