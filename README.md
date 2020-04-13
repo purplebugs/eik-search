@@ -119,7 +119,7 @@ In Kibana, open the Dev Tools console in the left hand panel
 
 Copy and paste these commands into Dev Tools, run the commands, and look at the results
 
-Note: Dev Tools console shows only top 10 by default, if not overridd
+Dev Tools console default shows only top 10, unless overridden by specifying "size"
 
 ```
 # Search for all documents in the index
