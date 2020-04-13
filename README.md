@@ -77,7 +77,7 @@ In Kibana, open the Dev Tools console in the left hand panel
 
 Copy and paste this command into Dev Tools and run the command
 
-Note: Dev Tools console default shows only top 10, unless overridden by specifying "size": ...
+Note: Dev Tools console default shows only top 10, unless overridden by specifying "size": .. 
 
 ```
 # Add an index of hardcoded data for use while developing search
