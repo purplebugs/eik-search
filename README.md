@@ -9,7 +9,7 @@ The larger goal is to then develop search for eik.dev
 
 Work in progress...
 
-Current status: Ability to spin up Elasticsearch and Kibana quickly, and add an index containing hardcoded data for use while developing search
+Current status: Ability to spin up Elasticsearch and Kibana quickly, add an index containing hardcoded data for use while developing search, run search queries
 
 
 ## Pre-Requisites
@@ -77,7 +77,7 @@ In Kibana, open the Dev Tools console in the left hand panel
 
 Copy and paste this command into Dev Tools and run the command
 
-Note: Dev Tools console default shows only top 10, unless overridden by specifying "size": ...
+Dev Tools console default shows only top 10, unless overridden by specifying "size"
 
 ```
 # Add an index of hardcoded data for use while developing search
