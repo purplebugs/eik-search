@@ -77,8 +77,6 @@ In Kibana, open the Dev Tools console in the left hand panel
 
 Copy and paste this command into Dev Tools and run the command
 
-Dev Tools console default shows only top 10, unless overridden by specifying "size"
-
 ```
 # Add an index of hardcoded data for use while developing search
 
@@ -118,8 +116,6 @@ There should be 8 "hits" in the response.
 In Kibana, open the Dev Tools console in the left hand panel
 
 Copy and paste these commands into Dev Tools, run the commands, and look at the results
-
-Dev Tools console default shows only top 10, unless overridden by specifying "size"
 
 ```
 # Search for all documents in the index
