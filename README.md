@@ -25,7 +25,8 @@ Current status: Ability to spin up Elasticsearch and Kibana quickly, and add an 
 3. Verify Elasticsearch and Kibana are running locally
 4. TODO: Optional: Become familiar with useful Docker commands
 5. Add an index of hardcoded data into Elasticsearch for use while developing search
-6. TODO: Create node.js app with search
+6. Try out search queries in Kibana Dev Tools while developing search
+7. TODO: Create node.js app with search
 
 
 ### Run docker-compose to quickly spin up Elasticsearch and Kibana
@@ -77,6 +78,8 @@ In Kibana, open the Dev Tools console in the left hand panel
 Copy and paste this command into Dev Tools and run the command
 
 ```
+# Add an index of hardcoded data for use while developing search
+
 POST _bulk
 {"index": {"_index": "anita3", "_id" : "1"}}
 {"integrity" : "sha512-nOnJP41e2MTxtqvsZW7ueINwP+GIVTgN5l+Y1KA9QcMH6SSaweFqBmxglGj3/07MQSOru7DBZk/IWAOmle5urg==", "timestamp" : "23423534534", "version" : "8.5.3", "author" : { "name" : "Second User", "user" : "second_user" }, "name" : "fuzz react.js", "org" : "biz", "files" : [ { "integrity" : "sha512-T2qS6EBvOIu10bhUas3FhD39KkwIiXxplJ13q2EdXcA7nlYljlLKaymKhqz49f7qrEKhdISc4q5N+bk0Y1Y/NA==", "pathname" : "/main/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 19208 }, { "integrity" : "sha512-0K6U6pmI04xIBGE+KgfSRNMY0gBmKAwjWzZ+DM/tkicZSG+Uz5erTFw1Zru/0wXUPs256glMX24n0f1Q4z62tw==", "pathname" : "/main/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 881205 }, { "integrity" : "sha512-rQhStjrIsElTJci6ZXYSCxGrnJk2Q+11UAi9idgtvehAyqT1LssOiDVCEbJMp4a6bQJB6fLb2QRiHUl+pEDEVQ==", "pathname" : "/ie11/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 96583 }, { "integrity" : "sha512-GEu0TFPbh7uuNuDE2pUjzOigwyQu1use25xzIsU2qKRO2jcxWzA4PLmwiNyp2dCWzuddtPVhKRfKJ7LW9Rmrng==", "pathname" : "/ie11/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 9182 }, { "integrity" : "sha512-WmTcH9Z9W0/dppj6eypuw7an0wW06GBS9PxNqQ4/I/oJs7OiuIulbE2+q5eHPgvqaSPKs49R4wT9ftX2GxU/Sw==", "pathname" : "/main/index.css", "mimeType" : "text/css", "type" : "file", "size" : 687 }, { "integrity" : "sha512-HpKd+6/eBPNpxQa1/Z24P6gJ1pNgYJTbiBlCtagUAUK9b6nEjYZzMP9LmDCPOz09AOGB68/eHOSXELNaWEQDSQ==", "pathname" : "/main/index.css.map", "mimeType" : "application/json", "type" : "file", "size" : 165 }, { "integrity" : "sha512-bbvrcbo0thGy8aKJHdvatKDQOi8r2qUflS4DI5VuYlU6H4PSDz1xQprcpxPTX9NSs8pnskYrklqgnDe1GjMn8w==", "pathname" : "/assets.json", "mimeType" : "application/json", "type" : "file", "size" : 194 } ], "meta" : [ ] }
@@ -106,3 +109,33 @@ GET anita3/_search
 ```
 
 There should be 8 "hits" in the response.
+
+
+### Try out search queries in Kibana Dev Tools while developing search
+
+In Kibana, open the Dev Tools console in the left hand panel
+
+Copy and paste these commands into Dev Tools, run the commands, and look at the results
+
+```
+# Search for all documents in the index
+# Dev Tools console default shows only top 10
+
+GET anita3/_search
+```
+
+```
+# Search for documents containing any terms in "name", case insensitive, show only fields listed in _source
+# Dev Tools console default shows only top 10
+
+GET anita3/_search
+{
+  "_source": ["author.name", "author.user", "name", "org"],
+  "query": {
+    "match": {
+      "name": "vue vue.js react react.js"
+    }
+  }
+}
+```
+
