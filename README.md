@@ -168,6 +168,23 @@ GET anita3/_search
 ```
 
 ```
+# How many versions of each file name exists, for top 10 files?
+
+GET anita3/_search
+{
+  "size": 0,
+  "aggs": {
+    "number_of_versions_of_each_file": {
+      "terms": {
+        "field": "name.keyword",
+        "size": 10
+      }
+    }
+  }
+}
+```
+
+```
 # Get top 10 file types and how many of each
 
 GET anita3/_search
