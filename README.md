@@ -26,7 +26,8 @@ Current status: Ability to spin up Elasticsearch and Kibana quickly, add an inde
 4. TODO: Optional: Become familiar with useful Docker commands
 5. Add an index of hardcoded data into Elasticsearch for use while developing search
 6. Try out search queries in Kibana Dev Tools while developing search
-7. TODO: Create node.js app with search
+7. Add an ingest pipeline to the index that creates a scope field based on name
+8. TODO: Create node.js app with search
 
 
 ### Run docker-compose to quickly spin up Elasticsearch and Kibana
@@ -112,7 +113,7 @@ Verify the index by running this command in Dev Tools:
 GET anita3/_search
 ```
 
-There should be 8 "hits" in the response.
+There should be some "hits" in the response.
 
 
 ### Try out search queries in Kibana Dev Tools while developing search
@@ -205,3 +206,33 @@ GET anita3/_search
   }
 }
 ```
+
+### Add an ingest pipeline to the index that creates a scope field based on name
+
+```
+# Create a "scope" field containing the value of "name" between @ and / otherwise leave blank
+# Example, if "name" is "name" : "@jane/foo.js" then "scope" : "jane"
+
+PUT _ingest/pipeline/create_scope_field
+{
+  "processors": [
+    {
+      "gsub": {
+        "field": "name",
+        "pattern": "^@(.*)/.*",
+        "replacement": "$1",
+        "target_field": "scope"
+      }
+    },
+    {
+      "set": {
+        "if": "ctx.name == ctx.scope",
+        "field": "scope",
+        "value": ""
+      }
+    }
+  ]
+}
+```
+
+Work in progress... to reindex using this pipeline
