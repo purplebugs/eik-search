@@ -219,7 +219,7 @@ PUT _ingest/pipeline/create_scope_field
     {
       "gsub": {
         "field": "name",
-        "pattern": "^@(.*)/.*",
+        "pattern": "^@(.*)/(.*)",
         "replacement": "$1",
         "target_field": "scope"
       }
