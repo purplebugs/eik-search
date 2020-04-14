@@ -211,7 +211,7 @@ GET anita3/_search
 
 ```
 # Create a "scope" field containing the value of "name" between @ and / otherwise leave blank
-# Example, if "name" is "name" : "@jane/foo.js" then "scope" : "jane"
+# Example, if "name" : "@jane/foo.js" then "scope" : "jane"
 
 PUT _ingest/pipeline/create_scope_field
 {
