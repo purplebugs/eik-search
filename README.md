@@ -260,4 +260,16 @@ Install the repo locally
 npm install
 ```
 
-Run the app ... TODO...
+Run the app
+
+```
+npm start
+```
+
+Verify the app is working by navigating to
+
+```
+http://localhost:3000/
+```
+
+There should be some text output displayed.
