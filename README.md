@@ -9,7 +9,7 @@ The larger goal is to then develop search for eik.dev
 
 Work in progress...
 
-Current status: Ability to spin up Elasticsearch and Kibana quickly, add an index containing hardcoded data for use while developing search, run search queries, run node.js app that currently does nothing much
+Current status: Ability to spin up Elasticsearch and Kibana quickly, add an index containing hardcoded data for use while developing search, run search queries, install and run node.js app that currently does nothing much
 
 
 ## Pre-Requisites
@@ -30,6 +30,7 @@ Current status: Ability to spin up Elasticsearch and Kibana quickly, add an inde
 6. Try out search queries in Kibana Dev Tools while developing search
 7. Search app precondition: Install and run node.js app
 8. TODO: Create node.js app with search
+9. Search app tests: run the tests
 
 
 ### Run docker-compose to quickly spin up Elasticsearch and Kibana
@@ -270,4 +271,12 @@ Check the app is working by verifying some text output is displayed when navigat
 
 ```
 http://localhost:3000/
+```
+
+### Search app tests: run the tests
+
+Run the tests using
+
+```
+npm test
 ```

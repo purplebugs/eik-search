@@ -6,10 +6,20 @@
   "dependencies": {
     "fastify": "^2.13.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.1.0",
+    "eslint-config-prettier": "6.10.1",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-prettier": "3.1.2",
+    "prettier": "2.0.2",
+    "tap": "14.10.6"
+  },
   "scripts": {
     "start": "node ./lib/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap test/**/*.js",
+    "lint:fix": "eslint --fix .",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
