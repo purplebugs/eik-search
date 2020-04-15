@@ -22,12 +22,12 @@ Current status: Ability to spin up Elasticsearch and Kibana quickly, add an inde
 ## Steps to take
 
 1. Run docker-compose to quickly spin up Elasticsearch and Kibana
-3. Verify Elasticsearch and Kibana are running locally
-4. TODO: Optional: Become familiar with useful Docker commands
-5. Add an index of hardcoded data into Elasticsearch for use while developing search
+2. Verify Elasticsearch and Kibana are running locally
+3. TODO: Optional: Become familiar with useful Docker commands
+4. Index precondition: Add an ingest pipeline to the index that creates a scope field based on name
+5. Index creation: Add an index of hardcoded data into Elasticsearch for use while developing search
 6. Try out search queries in Kibana Dev Tools while developing search
-7. Add an ingest pipeline to the index that creates a scope field based on name
-8. TODO: Create node.js app with search
+7. TODO: Create node.js app with search
 
 
 ### Run docker-compose to quickly spin up Elasticsearch and Kibana
@@ -72,7 +72,50 @@ Navigate to http://localhost:5601/
 
 The web browser should show the home page of Kibana, the UI used for developing and running Elasticsearch queries that will be used in the https://eik.dev/ application for search.
 
-### Add an index of hardcoded data into Elasticsearch for use while developing search
+### Index precondition: Add an ingest pipeline to the index that creates a scope field based on name
+
+Create the ingest pipeline
+
+```
+# Create a "scope" field containing the value of "name" between @ and / otherwise leave blank
+# Example, if "name" : "@jane/foo.js" then "scope" : "jane"
+
+PUT _ingest/pipeline/create_scope_field
+{
+  "processors": [
+    {
+      "gsub": {
+        "field": "name",
+        "pattern": "^@(.*)/(.*)",
+        "replacement": "$1",
+        "target_field": "scope"
+      }
+    },
+    {
+      "set": {
+        "if": "ctx.name == ctx.scope",
+        "field": "scope",
+        "value": ""
+      }
+    }
+  ]
+}
+```
+
+Add this ingest pipeline to the index
+
+```
+# Always apply this pipeline to the index
+
+PUT anita3
+{
+  "settings": {
+    "default_pipeline": "create_scope_field"
+  }
+}
+```
+
+### Index creation: Add an index of hardcoded data into Elasticsearch for use while developing search
 
 In Kibana, open the Dev Tools console in the left hand panel
 
@@ -134,7 +177,7 @@ GET anita3/_search
 
 GET anita3/_search
 {
-  "_source": ["author.name", "author.user", "name", "org"],
+  "_source": ["author.name", "author.user", "name", "org", "scope"],
   "query": {
     "match": {
       "name": "some-package example.com under_score 123numeric @npm/thingy @jane/foo.js"
@@ -207,32 +250,3 @@ GET anita3/_search
 }
 ```
 
-### Add an ingest pipeline to the index that creates a scope field based on name
-
-```
-# Create a "scope" field containing the value of "name" between @ and / otherwise leave blank
-# Example, if "name" : "@jane/foo.js" then "scope" : "jane"
-
-PUT _ingest/pipeline/create_scope_field
-{
-  "processors": [
-    {
-      "gsub": {
-        "field": "name",
-        "pattern": "^@(.*)/(.*)",
-        "replacement": "$1",
-        "target_field": "scope"
-      }
-    },
-    {
-      "set": {
-        "if": "ctx.name == ctx.scope",
-        "field": "scope",
-        "value": ""
-      }
-    }
-  ]
-}
-```
-
-Work in progress... to reindex using this pipeline
