@@ -9,7 +9,7 @@ The larger goal is to then develop search for eik.dev
 
 Work in progress...
 
-Current status: Ability to spin up Elasticsearch and Kibana quickly, add an index containing hardcoded data for use while developing search, run search queries
+Current status: Ability to spin up Elasticsearch and Kibana quickly, add an index containing hardcoded data for use while developing search, run search queries, run node.js app that currently does nothing much
 
 
 ## Pre-Requisites
@@ -266,10 +266,8 @@ Run the app
 npm start
 ```
 
-Verify the app is working by navigating to
+Check the app is working by verifying some text output is displayed when navigating to
 
 ```
 http://localhost:3000/
 ```
-
-There should be some text output displayed.
