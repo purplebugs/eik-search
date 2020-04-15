@@ -1,0 +1,32 @@
+{
+  "name": "eik-search",
+  "version": "1.0.0",
+  "description": "Playground for developing search for https://eik.dev/ using Elasticsearch",
+  "main": "./lib/main.js",
+  "dependencies": {
+    "fastify": "^2.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/purplebugs/eik-search.git"
+  },
+  "keywords": [
+    "eik",
+    "search",
+    "elasticsearch",
+    "ECM",
+    "CSS",
+    "asset",
+    "server"
+  ],
+  "author": "Anita Lipsky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/purplebugs/eik-search/issues"
+  },
+  "homepage": "https://github.com/purplebugs/eik-search#readme"
+}
