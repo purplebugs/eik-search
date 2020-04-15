@@ -267,15 +267,22 @@ Run the app
 npm start
 ```
 
-Check the app is working by verifying some text output is displayed when navigating to
+Check the app is working by verifying some text output is displayed when navigating to any of the following
 
 ```
+# Proof of concept
 http://localhost:3000/
+
+# Returns status of elasticsearch cluster
+http://localhost:3000/status
+
+# // Returns default match_all search for index
+http://localhost:3000/search
 ```
 
-### Search app tests: run the tests
+### Search app tests: run tests
 
-Run the tests using
+Run the tests
 
 ```
 npm test
