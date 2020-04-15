@@ -17,6 +17,7 @@ Current status: Ability to spin up Elasticsearch and Kibana quickly, add an inde
 1. Install [docker](https://docs.docker.com/install/)
 2. Install [docker-compose](https://docs.docker.com/compose/install/)
 3. Clone this repo
+4. Install [node.js](https://nodejs.org/)
 
 
 ## Steps to take
@@ -27,7 +28,8 @@ Current status: Ability to spin up Elasticsearch and Kibana quickly, add an inde
 4. Index precondition: Add an ingest pipeline to the index that creates a scope field based on name
 5. Index creation: Add an index of hardcoded data into Elasticsearch for use while developing search
 6. Try out search queries in Kibana Dev Tools while developing search
-7. TODO: Create node.js app with search
+7. Search app precondition: Install and run node.js app
+8. TODO: Create node.js app with search
 
 
 ### Run docker-compose to quickly spin up Elasticsearch and Kibana
@@ -250,3 +252,12 @@ GET anita3/_search
 }
 ```
 
+### Search app precondition: Install and run node.js app
+
+Install the repo locally
+
+```
+npm install
+```
+
+Run the app ... TODO...
