@@ -9,7 +9,7 @@ The larger goal is to then develop search for eik.dev
 
 Work in progress...
 
-Current status: Ability to spin up Elasticsearch and Kibana quickly, add an index containing hardcoded data for use while developing search, run search queries, install and run node.js app that currently does nothing much
+Current status: Ability to spin up Elasticsearch and Kibana quickly, add an index containing hardcoded data for use while developing search, run search queries, install and run node.js app that currently returns simple search from index
 
 
 ## Pre-Requisites
@@ -276,7 +276,7 @@ http://localhost:3000/
 # Returns status of elasticsearch cluster
 http://localhost:3000/status
 
-# // Returns default match_all search for index
+# Returns default match_all search for index
 http://localhost:3000/search
 ```
 
