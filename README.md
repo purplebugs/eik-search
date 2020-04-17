@@ -282,6 +282,9 @@ http://localhost:3000/search
 
 # Returns default match_all search for index
 http://localhost:3000/search2
+
+# Can also pass in search params as follows (example):
+http://localhost:3000/search2?q=some-package%20example.com%20under_score%20123numeric%20thingy
 ```
 
 ### Search app tests: run tests
