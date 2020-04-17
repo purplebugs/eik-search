@@ -278,6 +278,10 @@ http://localhost:3000/status
 
 # Returns default match_all search for index
 http://localhost:3000/search
+
+
+# Returns default match_all search for index
+http://localhost:3000/search2
 ```
 
 ### Search app tests: run tests
