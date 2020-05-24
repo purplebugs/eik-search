@@ -79,7 +79,7 @@ The web browser should show the home page of Kibana, the UI used for developing 
 
 ### Become familiar with running a command in Kibana Dev Tools
 
-1. Navigate to Dev Tools within Kibana
+1. Navigate to Dev Tools within Kibana by clicking Dev Tools in the left hand menu
 2. The following command below should appear in Dev Tools by default
 4. Run the command by clicking within the command
 5. Then click the green arrow or hit Cmd/Ctrl + Enter
