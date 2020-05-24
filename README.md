@@ -25,7 +25,7 @@ Current status: Ability to spin up Elasticsearch and Kibana quickly, add an inde
 1. Run docker-compose to quickly spin up Elasticsearch and Kibana
 2. Verify Elasticsearch and Kibana are running locally
 3. TODO: Optional: Become familiar with useful Docker commands
-4. Become familiar with Kibana DevTools
+4. Learn how to run a command in Kibana Dev Tools
 5. Index precondition: Add an ingest pipeline to the index that creates a scope field based on name
 6. Index creation: Add an index of hardcoded data into Elasticsearch for use while developing search
 7. Try out search queries in Kibana Dev Tools while developing search
@@ -77,12 +77,14 @@ Navigate to http://localhost:5601/
 The web browser should show the home page of Kibana, the UI used for developing and running Elasticsearch queries that will be used in the https://eik.dev/ application for search.
 
 
-### Become familiar with running a command in Kibana Dev Tools
+### Learn how to run a command in Kibana Dev Tools
 
 1. Navigate to Dev Tools within Kibana by clicking Dev Tools in the left hand menu
 2. The following command below should appear in Dev Tools by default
 4. Run the command by clicking within the command
 5. Then click the green arrow or hit Cmd/Ctrl + Enter
+6. The right hand panel should show the search results
+6. You have now run a command in Kibana Dev Tools
 
 ```
 GET _search
@@ -92,7 +94,6 @@ GET _search
   }
 }
 ```
-
 
 ### Index precondition: Add an ingest pipeline to the index that creates a scope field based on name
 
