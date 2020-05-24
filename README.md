@@ -25,12 +25,13 @@ Current status: Ability to spin up Elasticsearch and Kibana quickly, add an inde
 1. Run docker-compose to quickly spin up Elasticsearch and Kibana
 2. Verify Elasticsearch and Kibana are running locally
 3. TODO: Optional: Become familiar with useful Docker commands
-4. Index precondition: Add an ingest pipeline to the index that creates a scope field based on name
-5. Index creation: Add an index of hardcoded data into Elasticsearch for use while developing search
-6. Try out search queries in Kibana Dev Tools while developing search
-7. Search app precondition: Install and run node.js app
-8. TODO: Create node.js app with search
-9. Search app tests: run the tests
+4. Become familiar with Kibana DevTools
+5. Index precondition: Add an ingest pipeline to the index that creates a scope field based on name
+6. Index creation: Add an index of hardcoded data into Elasticsearch for use while developing search
+7. Try out search queries in Kibana Dev Tools while developing search
+8. Search app precondition: Install and run node.js app
+9. TODO: Create node.js app with search
+10. Search app tests: run the tests
 
 
 ### Run docker-compose to quickly spin up Elasticsearch and Kibana
@@ -75,13 +76,29 @@ Navigate to http://localhost:5601/
 
 The web browser should show the home page of Kibana, the UI used for developing and running Elasticsearch queries that will be used in the https://eik.dev/ application for search.
 
+
+### Become familiar with running a command in Kibana Dev Tools
+
+1. Navigate to Dev Tools within Kibana
+2. The following command below should appear in Dev Tools by default
+4. Run the command by clicking within the command
+5. Then click the green arrow or hit Cmd/Ctrl + Enter
+
+```
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+
 ### Index precondition: Add an ingest pipeline to the index that creates a scope field based on name
 
 Create the ingest pipeline:
 
-1. Navigate to Dev Tools within Kibana
-2. Copy the command below and paste it into Dev Tools
-4. Run the command by using the green arrow, or Cmd/Ctrl + Enter
+1. Run the following command in Kibana Dev Tools
 
 ```
 # Create a "scope" field containing the value of "name" between @ and / otherwise leave blank
@@ -111,7 +128,7 @@ PUT _ingest/pipeline/create_scope_field
 
 Add this ingest pipeline to the index:
 
-1. In Dev Tools, copy the command below and run it
+1. Run the following command in Kibana Dev Tools
 
 ```
 # Always apply this pipeline to the index
@@ -126,9 +143,7 @@ PUT eik_search
 
 ### Index creation: Add an index of hardcoded data into Elasticsearch for use while developing search
 
-1. Navigate to Dev Tools within Kibana
-2. Copy the command below and paste it into Dev Tools
-4. Run the command by using the green arrow, or Cmd/Ctrl + Enter
+1. Run the following command in Kibana Dev Tools
 
 ```
 # Add an index of hardcoded data for use while developing search
@@ -170,9 +185,7 @@ There should be some "hits" in the response.
 
 ### Try out search queries in Kibana Dev Tools while developing search
 
-In Kibana, open the Dev Tools console in the left hand panel
-
-Copy and paste these commands into Dev Tools, run the commands, and look at the results
+1. Run the following commands in Kibana Dev Tools and look at the results
 
 ```
 # Search for all documents in the index
