@@ -58,13 +58,13 @@ Example response at the time of writing:
   "cluster_name" : "es-docker-cluster",
   "cluster_uuid" : "IvWJmJu2SdybDbmRHpgAlA",
   "version" : {
-    "number" : "7.6.0",
+    "number" : "7.7.0",
     "build_flavor" : "default",
     "build_type" : "docker",
-    "build_hash" : "7f634e9f44834fbc12724506cc1da681b0c3b1e3",
-    "build_date" : "2020-02-06T00:09:00.449973Z",
+    "build_hash" : "81a1e9eda8e6183f5237786246f6dced26a10eaf",
+    "build_date" : "2020-05-12T02:01:37.602180Z",
     "build_snapshot" : false,
-    "lucene_version" : "8.4.0",
+    "lucene_version" : "8.5.1",
     "minimum_wire_compatibility_version" : "6.8.0",
     "minimum_index_compatibility_version" : "6.0.0-beta1"
   },
