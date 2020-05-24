@@ -77,7 +77,11 @@ The web browser should show the home page of Kibana, the UI used for developing 
 
 ### Index precondition: Add an ingest pipeline to the index that creates a scope field based on name
 
-Create the ingest pipeline
+Create the ingest pipeline:
+
+1. Navigate to Dev Tools within Kibana
+2. Copy the command below and paste it into Dev Tools
+4. Run the command by using the green arrow, or Cmd/Ctrl + Enter
 
 ```
 # Create a "scope" field containing the value of "name" between @ and / otherwise leave blank
@@ -105,12 +109,14 @@ PUT _ingest/pipeline/create_scope_field
 }
 ```
 
-Add this ingest pipeline to the index
+Add this ingest pipeline to the index:
+
+1. In Dev Tools, copy the command below and run it
 
 ```
 # Always apply this pipeline to the index
 
-PUT anita3
+PUT eik_search
 {
   "settings": {
     "default_pipeline": "create_scope_field"
@@ -120,33 +126,33 @@ PUT anita3
 
 ### Index creation: Add an index of hardcoded data into Elasticsearch for use while developing search
 
-In Kibana, open the Dev Tools console in the left hand panel
-
-Copy and paste this command into Dev Tools and run the command
+1. Navigate to Dev Tools within Kibana
+2. Copy the command below and paste it into Dev Tools
+4. Run the command by using the green arrow, or Cmd/Ctrl + Enter
 
 ```
 # Add an index of hardcoded data for use while developing search
 
 POST _bulk
-{"index": {"_index": "anita3", "_id" : "1"}}
+{"index": {"_index": "eik_search", "_id" : "1"}}
 {"integrity" : "sha512-nOnJP41e2MTxtqvsZW7ueINwP+GIVTgN5l+Y1KA9QcMH6SSaweFqBmxglGj3/07MQSOru7DBZk/IWAOmle5urg==", "timestamp" : "23423534534", "version" : "8.5.3", "author" : { "name" : "Second User", "user" : "second_user" }, "name" : "some-package", "type" : "package", "org" : "biz", "files" : [ { "integrity" : "sha512-T2qS6EBvOIu10bhUas3FhD39KkwIiXxplJ13q2EdXcA7nlYljlLKaymKhqz49f7qrEKhdISc4q5N+bk0Y1Y/NA==", "pathname" : "/main/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 19208 }, { "integrity" : "sha512-0K6U6pmI04xIBGE+KgfSRNMY0gBmKAwjWzZ+DM/tkicZSG+Uz5erTFw1Zru/0wXUPs256glMX24n0f1Q4z62tw==", "pathname" : "/main/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 881205 }, { "integrity" : "sha512-rQhStjrIsElTJci6ZXYSCxGrnJk2Q+11UAi9idgtvehAyqT1LssOiDVCEbJMp4a6bQJB6fLb2QRiHUl+pEDEVQ==", "pathname" : "/ie11/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 96583 }, { "integrity" : "sha512-GEu0TFPbh7uuNuDE2pUjzOigwyQu1use25xzIsU2qKRO2jcxWzA4PLmwiNyp2dCWzuddtPVhKRfKJ7LW9Rmrng==", "pathname" : "/ie11/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 9182 }, { "integrity" : "sha512-WmTcH9Z9W0/dppj6eypuw7an0wW06GBS9PxNqQ4/I/oJs7OiuIulbE2+q5eHPgvqaSPKs49R4wT9ftX2GxU/Sw==", "pathname" : "/main/index.css", "mimeType" : "text/css", "type" : "file", "size" : 687 }, { "integrity" : "sha512-HpKd+6/eBPNpxQa1/Z24P6gJ1pNgYJTbiBlCtagUAUK9b6nEjYZzMP9LmDCPOz09AOGB68/eHOSXELNaWEQDSQ==", "pathname" : "/main/index.css.map", "mimeType" : "application/json", "type" : "file", "size" : 165 }, { "integrity" : "sha512-bbvrcbo0thGy8aKJHdvatKDQOi8r2qUflS4DI5VuYlU6H4PSDz1xQprcpxPTX9NSs8pnskYrklqgnDe1GjMn8w==", "pathname" : "/assets.json", "mimeType" : "application/json", "type" : "file", "size" : 194 } ], "meta" : [ ] }
-{"index": {"_index": "anita3", "_id" : "2"}}
+{"index": {"_index": "eik_search", "_id" : "2"}}
 {"integrity" : "sha512-nOnJP41e2MTxtqvsZW7ueINwP+GIVTgN5l+Y1KA9QcMH6SSaweFqBmxglGj3/07MQSOru7DBZk/IWAOmle5urg==", "timestamp" : "23423534534", "version" : "8.6.3", "author" : { "name" : "Second User", "user" : "second_user" }, "name" : "some-package", "type" : "package", "org" : "biz", "files" : [ { "integrity" : "sha512-T2qS6EBvOIu10bhUas3FhD39KkwIiXxplJ13q2EdXcA7nlYljlLKaymKhqz49f7qrEKhdISc4q5N+bk0Y1Y/NA==", "pathname" : "/main/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 29208 }, { "integrity" : "sha512-0K6U6pmI04xIBGE+KgfSRNMY0gBmKAwjWzZ+DM/tkicZSG+Uz5erTFw1Zru/0wXUPs256glMX24n0f1Q4z62tw==", "pathname" : "/main/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 9981205 }, { "integrity" : "sha512-rQhStjrIsElTJci6ZXYSCxGrnJk2Q+11UAi9idgtvehAyqT1LssOiDVCEbJMp4a6bQJB6fLb2QRiHUl+pEDEVQ==", "pathname" : "/ie11/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 96583 }, { "integrity" : "sha512-GEu0TFPbh7uuNuDE2pUjzOigwyQu1use25xzIsU2qKRO2jcxWzA4PLmwiNyp2dCWzuddtPVhKRfKJ7LW9Rmrng==", "pathname" : "/ie11/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 9182 }, { "integrity" : "sha512-WmTcH9Z9W0/dppj6eypuw7an0wW06GBS9PxNqQ4/I/oJs7OiuIulbE2+q5eHPgvqaSPKs49R4wT9ftX2GxU/Sw==", "pathname" : "/main/index.css", "mimeType" : "text/css", "type" : "file", "size" : 687 }, { "integrity" : "sha512-HpKd+6/eBPNpxQa1/Z24P6gJ1pNgYJTbiBlCtagUAUK9b6nEjYZzMP9LmDCPOz09AOGB68/eHOSXELNaWEQDSQ==", "pathname" : "/main/index.css.map", "mimeType" : "application/json", "type" : "file", "size" : 165 }, { "integrity" : "sha512-bbvrcbo0thGy8aKJHdvatKDQOi8r2qUflS4DI5VuYlU6H4PSDz1xQprcpxPTX9NSs8pnskYrklqgnDe1GjMn8w==", "pathname" : "/assets.json", "mimeType" : "application/json", "type" : "file", "size" : 194 } ], "meta" : [ ] }
-{"index": {"_index": "anita3", "_id" : "3"}}
+{"index": {"_index": "eik_search", "_id" : "3"}}
 {"integrity" : "sha512-nOnJP41e2MTxtqvsZW7ueINwP+GIVTgN5l+Y1KA9QcMH6SSaweFqBmxglGj3/07MQSOru7DBZk/IWAOmle5urg==", "timestamp" : "23423534534", "version" : "8.4.1", "author" : { "name" : "Some User", "user" : "some_user" }, "name" : "example.com", "type" : "package", "org" : "biz", "files" : [ { "integrity" : "sha512-T2qS6EBvOIu10bhUas3FhD39KkwIiXxplJ13q2EdXcA7nlYljlLKaymKhqz49f7qrEKhdISc4q5N+bk0Y1Y/NA==", "pathname" : "/main/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 75208 }, { "integrity" : "sha512-0K6U6pmI04xIBGE+KgfSRNMY0gBmKAwjWzZ+DM/tkicZSG+Uz5erTFw1Zru/0wXUPs256glMX24n0f1Q4z62tw==", "pathname" : "/main/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 771205 }, { "integrity" : "sha512-rQhStjrIsElTJci6ZXYSCxGrnJk2Q+11UAi9idgtvehAyqT1LssOiDVCEbJMp4a6bQJB6fLb2QRiHUl+pEDEVQ==", "pathname" : "/ie11/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 75483 }, { "integrity" : "sha512-GEu0TFPbh7uuNuDE2pUjzOigwyQu1use25xzIsU2qKRO2jcxWzA4PLmwiNyp2dCWzuddtPVhKRfKJ7LW9Rmrng==", "pathname" : "/ie11/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 769182 }, { "integrity" : "sha512-WmTcH9Z9W0/dppj6eypuw7an0wW06GBS9PxNqQ4/I/oJs7OiuIulbE2+q5eHPgvqaSPKs49R4wT9ftX2GxU/Sw==", "pathname" : "/main/index.css", "mimeType" : "text/css", "type" : "file", "size" : 68 }, { "integrity" : "sha512-HpKd+6/eBPNpxQa1/Z24P6gJ1pNgYJTbiBlCtagUAUK9b6nEjYZzMP9LmDCPOz09AOGB68/eHOSXELNaWEQDSQ==", "pathname" : "/main/index.css.map", "mimeType" : "application/json", "type" : "file", "size" : 165 }, { "integrity" : "sha512-bbvrcbo0thGy8aKJHdvatKDQOi8r2qUflS4DI5VuYlU6H4PSDz1xQprcpxPTX9NSs8pnskYrklqgnDe1GjMn8w==", "pathname" : "/assets.json", "mimeType" : "application/json", "type" : "file", "size" : 194 } ], "meta" : [ ] }
-{"index": {"_index": "anita3", "_id" : "4"}}
+{"index": {"_index": "eik_search", "_id" : "4"}}
 {"integrity" : "sha512-nOnJP41e2MTxtqvsZW7ueINwP+GIVTgN5l+Y1KA9QcMH6SSaweFqBmxglGj3/07MQSOru7DBZk/IWAOmle5urg==", "timestamp" : "23423534534", "version" : "8.5.2", "author" : { "name" : "Third User", "user" : "number_three" }, "name" : "under_score", "type" : "map", "org" : "biz", "files" : [ { "integrity" : "sha512-T2qS6EBvOIu10bhUas3FhD39KkwIiXxplJ13q2EdXcA7nlYljlLKaymKhqz49f7qrEKhdISc4q5N+bk0Y1Y/NA==", "pathname" : "/main/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 99208 }, { "integrity" : "sha512-0K6U6pmI04xIBGE+KgfSRNMY0gBmKAwjWzZ+DM/tkicZSG+Uz5erTFw1Zru/0wXUPs256glMX24n0f1Q4z62tw==", "pathname" : "/main/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 8781205 }, { "integrity" : "sha512-rQhStjrIsElTJci6ZXYSCxGrnJk2Q+11UAi9idgtvehAyqT1LssOiDVCEbJMp4a6bQJB6fLb2QRiHUl+pEDEVQ==", "pathname" : "/ie11/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 965483 }, { "integrity" : "sha512-GEu0TFPbh7uuNuDE2pUjzOigwyQu1use25xzIsU2qKRO2jcxWzA4PLmwiNyp2dCWzuddtPVhKRfKJ7LW9Rmrng==", "pathname" : "/ie11/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 779182 }, { "integrity" : "sha512-WmTcH9Z9W0/dppj6eypuw7an0wW06GBS9PxNqQ4/I/oJs7OiuIulbE2+q5eHPgvqaSPKs49R4wT9ftX2GxU/Sw==", "pathname" : "/main/index.css", "mimeType" : "text/css", "type" : "file", "size" : 68 }, { "integrity" : "sha512-HpKd+6/eBPNpxQa1/Z24P6gJ1pNgYJTbiBlCtagUAUK9b6nEjYZzMP9LmDCPOz09AOGB68/eHOSXELNaWEQDSQ==", "pathname" : "/main/index.css.map", "mimeType" : "application/json", "type" : "file", "size" : 165 }, { "integrity" : "sha512-bbvrcbo0thGy8aKJHdvatKDQOi8r2qUflS4DI5VuYlU6H4PSDz1xQprcpxPTX9NSs8pnskYrklqgnDe1GjMn8w==", "pathname" : "/assets.json", "mimeType" : "application/json", "type" : "file", "size" : 194 } ], "meta" : [ ] }
-{"index": {"_index": "anita3", "_id" : "5"}}
+{"index": {"_index": "eik_search", "_id" : "5"}}
 {"integrity" : "sha512-nOnJP41e2MTxtqvsZW7ueINwP+GIVTgN5l+Y1KA9QcMH6SSaweFqBmxglGj3/07MQSOru7DBZk/IWAOmle5urg==", "timestamp" : "23423534534", "version" : "8.7.3", "author" : { "name" : "Anita is Cool", "user" : "anitaIsCool" }, "name" : "under_score", "type" : "map", "org" : "biz", "files" : [ { "integrity" : "sha512-T2qS6EBvOIu10bhUas3FhD39KkwIiXxplJ13q2EdXcA7nlYljlLKaymKhqz49f7qrEKhdISc4q5N+bk0Y1Y/NA==", "pathname" : "/main/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 329208 }, { "integrity" : "sha512-0K6U6pmI04xIBGE+KgfSRNMY0gBmKAwjWzZ+DM/tkicZSG+Uz5erTFw1Zru/0wXUPs256glMX24n0f1Q4z62tw==", "pathname" : "/main/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 89815 }, { "integrity" : "sha512-rQhStjrIsElTJci6ZXYSCxGrnJk2Q+11UAi9idgtvehAyqT1LssOiDVCEbJMp4a6bQJB6fLb2QRiHUl+pEDEVQ==", "pathname" : "/ie11/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 76583 }, { "integrity" : "sha512-GEu0TFPbh7uuNuDE2pUjzOigwyQu1use25xzIsU2qKRO2jcxWzA4PLmwiNyp2dCWzuddtPVhKRfKJ7LW9Rmrng==", "pathname" : "/ie11/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 10182 }, { "integrity" : "sha512-WmTcH9Z9W0/dppj6eypuw7an0wW06GBS9PxNqQ4/I/oJs7OiuIulbE2+q5eHPgvqaSPKs49R4wT9ftX2GxU/Sw==", "pathname" : "/main/index.css", "mimeType" : "text/css", "type" : "file", "size" : 687 }, { "integrity" : "sha512-HpKd+6/eBPNpxQa1/Z24P6gJ1pNgYJTbiBlCtagUAUK9b6nEjYZzMP9LmDCPOz09AOGB68/eHOSXELNaWEQDSQ==", "pathname" : "/main/index.css.map", "mimeType" : "application/json", "type" : "file", "size" : 165 }, { "integrity" : "sha512-bbvrcbo0thGy8aKJHdvatKDQOi8r2qUflS4DI5VuYlU6H4PSDz1xQprcpxPTX9NSs8pnskYrklqgnDe1GjMn8w==", "pathname" : "/assets.json", "mimeType" : "application/json", "type" : "file", "size" : 194 } ], "meta" : [ ] }
-{"index": {"_index": "anita3", "_id" : "6"}}
+{"index": {"_index": "eik_search", "_id" : "6"}}
 {"integrity" : "sha512-nOnJP41e2MTxtqvsZW7ueINwP+GIVTgN5l+Y1KA9QcMH6SSaweFqBmxglGj3/07MQSOru7DBZk/IWAOmle5urg==", "timestamp" : "23423534534", "version" : "9.0.0", "author" : { "name" : "Anita is Cool", "user" : "anitaIsCool" }, "name" : "123numeric", "type" : "package", "org" : "biz", "files" : [ { "integrity" : "sha512-T2qS6EBvOIu10bhUas3FhD39KkwIiXxplJ13q2EdXcA7nlYljlLKaymKhqz49f7qrEKhdISc4q5N+bk0Y1Y/NA==", "pathname" : "/main/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 329300 }, { "integrity" : "sha512-0K6U6pmI04xIBGE+KgfSRNMY0gBmKAwjWzZ+DM/tkicZSG+Uz5erTFw1Zru/0wXUPs256glMX24n0f1Q4z62tw==", "pathname" : "/main/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 89825 }, { "integrity" : "sha512-rQhStjrIsElTJci6ZXYSCxGrnJk2Q+11UAi9idgtvehAyqT1LssOiDVCEbJMp4a6bQJB6fLb2QRiHUl+pEDEVQ==", "pathname" : "/ie11/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 7583 }, { "integrity" : "sha512-GEu0TFPbh7uuNuDE2pUjzOigwyQu1use25xzIsU2qKRO2jcxWzA4PLmwiNyp2dCWzuddtPVhKRfKJ7LW9Rmrng==", "pathname" : "/ie11/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 10182 }, { "integrity" : "sha512-WmTcH9Z9W0/dppj6eypuw7an0wW06GBS9PxNqQ4/I/oJs7OiuIulbE2+q5eHPgvqaSPKs49R4wT9ftX2GxU/Sw==", "pathname" : "/main/index.css", "mimeType" : "text/css", "type" : "file", "size" : 687 }, { "integrity" : "sha512-HpKd+6/eBPNpxQa1/Z24P6gJ1pNgYJTbiBlCtagUAUK9b6nEjYZzMP9LmDCPOz09AOGB68/eHOSXELNaWEQDSQ==", "pathname" : "/main/index.css.map", "mimeType" : "application/json", "type" : "file", "size" : 165 }, { "integrity" : "sha512-bbvrcbo0thGy8aKJHdvatKDQOi8r2qUflS4DI5VuYlU6H4PSDz1xQprcpxPTX9NSs8pnskYrklqgnDe1GjMn8w==", "pathname" : "/assets.json", "mimeType" : "application/json", "type" : "file", "size" : 194 } ], "meta" : [ ] }
-{"index": {"_index": "anita3", "_id" : "7"}}
+{"index": {"_index": "eik_search", "_id" : "7"}}
 {"integrity" : "sha512-nOnJP41e2MTxtqvsZW7ueINwP+GIVTgN5l+Y1KA9QcMH6SSaweFqBmxglGj3/07MQSOru7DBZk/IWAOmle5urg==", "timestamp" : "23423534534", "version" : "1.1.0", "author" : { "name" : "Rose is awesome", "user" : "awesome_Rose" }, "name" : "@npm/thingy", "type" : "package", "org" : "biz two", "files" : [ { "integrity" : "sha512-T2qS6EBvOIu10bhUas3FhD39KkwIiXxplJ13q2EdXcA7nlYljlLKaymKhqz49f7qrEKhdISc4q5N+bk0Y1Y/NA==", "pathname" : "/main/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 412000 }, { "integrity" : "sha512-rQhStjrIsElTJci6ZXYSCxGrnJk2Q+11UAi9idgtvehAyqT1LssOiDVCEbJMp4a6bQJB6fLb2QRiHUl+pEDEVQ==", "pathname" : "/ie11/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 2388989 }, { "integrity" : "sha512-GEu0TFPbh7uuNuDE2pUjzOigwyQu1use25xzIsU2qKRO2jcxWzA4PLmwiNyp2dCWzuddtPVhKRfKJ7LW9Rmrng==", "pathname" : "/ie11/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 165788 }, { "integrity" : "sha512-HpKd+6/eBPNpxQa1/Z24P6gJ1pNgYJTbiBlCtagUAUK9b6nEjYZzMP9LmDCPOz09AOGB68/eHOSXELNaWEQDSQ==", "pathname" : "/main/index.css.map", "mimeType" : "application/json", "type" : "file", "size" : 234 }, { "integrity" : "sha512-bbvrcbo0thGy8aKJHdvatKDQOi8r2qUflS4DI5VuYlU6H4PSDz1xQprcpxPTX9NSs8pnskYrklqgnDe1GjMn8w==", "pathname" : "/assets.json", "mimeType" : "application/json", "type" : "file", "size" : 340 } ], "meta" : [ ] }
-{"index": {"_index": "anita3", "_id" : "8"}}
+{"index": {"_index": "eik_search", "_id" : "8"}}
 {"integrity" : "sha512-nOnJP41e2MTxtqvsZW7ueINwP+GIVTgN5l+Y1KA9QcMH6SSaweFqBmxglGj3/07MQSOru7DBZk/IWAOmle5urg==", "timestamp" : "23423534534", "version" : "1.1.0", "author" : { "name" : "Rose is awesome", "user" : "awesome_Rose" }, "name" : "@jane/foo.js", "type" : "map", "org" : "biz two", "files" : [ { "integrity" : "sha512-T2qS6EBvOIu10bhUas3FhD39KkwIiXxplJ13q2EdXcA7nlYljlLKaymKhqz49f7qrEKhdISc4q5N+bk0Y1Y/NA==", "pathname" : "/main/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 512000 }, { "integrity" : "sha512-rQhStjrIsElTJci6ZXYSCxGrnJk2Q+11UAi9idgtvehAyqT1LssOiDVCEbJMp4a6bQJB6fLb2QRiHUl+pEDEVQ==", "pathname" : "/ie11/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 3388989 }, { "integrity" : "sha512-GEu0TFPbh7uuNuDE2pUjzOigwyQu1use25xzIsU2qKRO2jcxWzA4PLmwiNyp2dCWzuddtPVhKRfKJ7LW9Rmrng==", "pathname" : "/ie11/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 165799 }, { "integrity" : "sha512-HpKd+6/eBPNpxQa1/Z24P6gJ1pNgYJTbiBlCtagUAUK9b6nEjYZzMP9LmDCPOz09AOGB68/eHOSXELNaWEQDSQ==", "pathname" : "/main/index.css.map", "mimeType" : "application/json", "type" : "file", "size" : 234 }, { "integrity" : "sha512-bbvrcbo0thGy8aKJHdvatKDQOi8r2qUflS4DI5VuYlU6H4PSDz1xQprcpxPTX9NSs8pnskYrklqgnDe1GjMn8w==", "pathname" : "/assets.json", "mimeType" : "application/json", "type" : "file", "size" : 340 } ], "meta" : [ ] }
-{"index": {"_index": "anita3", "_id" : "9"}}
+{"index": {"_index": "eik_search", "_id" : "9"}}
 {"integrity" : "sha512-nOnJP41e2MTxtqvsZW7ueINwP+GIVTgN5l+Y1KA9QcMH6SSaweFqBmxglGj3/07MQSOru7DBZk/IWAOmle5urg==", "timestamp" : "23423534534", "version" : "1.1.2", "author" : { "name" : "Rose is awesome", "user" : "awesome_Rose" }, "name" : "@jane/foo.js", "type" : "map", "org" : "biz two", "files" : [ { "integrity" : "sha512-T2qS6EBvOIu10bhUas3FhD39KkwIiXxplJ13q2EdXcA7nlYljlLKaymKhqz49f7qrEKhdISc4q5N+bk0Y1Y/NA==", "pathname" : "/main/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 512000 }, { "integrity" : "sha512-rQhStjrIsElTJci6ZXYSCxGrnJk2Q+11UAi9idgtvehAyqT1LssOiDVCEbJMp4a6bQJB6fLb2QRiHUl+pEDEVQ==", "pathname" : "/ie11/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 3388989 }, { "integrity" : "sha512-GEu0TFPbh7uuNuDE2pUjzOigwyQu1use25xzIsU2qKRO2jcxWzA4PLmwiNyp2dCWzuddtPVhKRfKJ7LW9Rmrng==", "pathname" : "/ie11/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 165799 }, { "integrity" : "sha512-HpKd+6/eBPNpxQa1/Z24P6gJ1pNgYJTbiBlCtagUAUK9b6nEjYZzMP9LmDCPOz09AOGB68/eHOSXELNaWEQDSQ==", "pathname" : "/main/index.css.map", "mimeType" : "application/json", "type" : "file", "size" : 234 }, { "integrity" : "sha512-bbvrcbo0thGy8aKJHdvatKDQOi8r2qUflS4DI5VuYlU6H4PSDz1xQprcpxPTX9NSs8pnskYrklqgnDe1GjMn8w==", "pathname" : "/assets.json", "mimeType" : "application/json", "type" : "file", "size" : 340 } ], "meta" : [ ] }
-{"index": {"_index": "anita3", "_id" : "10"}}
+{"index": {"_index": "eik_search", "_id" : "10"}}
 {"integrity" : "sha512-nOnJP41e2MTxtqvsZW7ueINwP+GIVTgN5l+Y1KA9QcMH6SSaweFqBmxglGj3/07MQSOru7DBZk/IWAOmle5urg==", "timestamp" : "23423534534", "version" : "2.0.0", "author" : { "name" : "Rose is awesome", "user" : "awesome_Rose" }, "name" : "@npm/thingy", "type" : "package", "org" : "biz two", "files" : [ { "integrity" : "sha512-T2qS6EBvOIu10bhUas3FhD39KkwIiXxplJ13q2EdXcA7nlYljlLKaymKhqz49f7qrEKhdISc4q5N+bk0Y1Y/NA==", "pathname" : "/main/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 412000 }, { "integrity" : "sha512-rQhStjrIsElTJci6ZXYSCxGrnJk2Q+11UAi9idgtvehAyqT1LssOiDVCEbJMp4a6bQJB6fLb2QRiHUl+pEDEVQ==", "pathname" : "/ie11/index.js", "mimeType" : "application/javascript", "type" : "file", "size" : 2388989 }, { "integrity" : "sha512-GEu0TFPbh7uuNuDE2pUjzOigwyQu1use25xzIsU2qKRO2jcxWzA4PLmwiNyp2dCWzuddtPVhKRfKJ7LW9Rmrng==", "pathname" : "/ie11/index.js.map", "mimeType" : "application/json", "type" : "file", "size" : 165788 }, { "integrity" : "sha512-HpKd+6/eBPNpxQa1/Z24P6gJ1pNgYJTbiBlCtagUAUK9b6nEjYZzMP9LmDCPOz09AOGB68/eHOSXELNaWEQDSQ==", "pathname" : "/main/index.css.map", "mimeType" : "application/json", "type" : "file", "size" : 234 }, { "integrity" : "sha512-bbvrcbo0thGy8aKJHdvatKDQOi8r2qUflS4DI5VuYlU6H4PSDz1xQprcpxPTX9NSs8pnskYrklqgnDe1GjMn8w==", "pathname" : "/assets.json", "mimeType" : "application/json", "type" : "file", "size" : 340 } ], "meta" : [ ] }
 ```
 
@@ -156,7 +162,7 @@ An index of hardcoded data for use while developing search should have been adde
 Verify the index by running this command in Dev Tools:
 
 ```
-GET anita3/_search
+GET eik_search/_search
 ```
 
 There should be some "hits" in the response.
@@ -171,14 +177,14 @@ Copy and paste these commands into Dev Tools, run the commands, and look at the 
 ```
 # Search for all documents in the index
 
-GET anita3/_search
+GET eik_search/_search
 ```
 
 ```
 # Search for documents containing any terms in "name", case insensitive, show only fields listed in _source
 # "name" field will always comply with https://github.com/npm/validate-npm-package-name#naming-rules
 
-GET anita3/_search
+GET eik_search/_search
 {
   "_source": ["author.name", "author.user", "name", "org", "scope"],
   "query": {
@@ -192,7 +198,7 @@ GET anita3/_search
 ```
 # Return largest file size
 
-GET anita3/_search
+GET eik_search/_search
 { "size": 0, 
   "aggs": {
     "largest_file_size": {
@@ -207,7 +213,7 @@ GET anita3/_search
 ```
 # Get statistics on file sizes
 
-GET anita3/_search
+GET eik_search/_search
 { "size": 0, 
   "aggs": {
     "file_size_statistics": {
@@ -222,7 +228,7 @@ GET anita3/_search
 ```
 # How many versions of each file name exists, for top 10 files?
 
-GET anita3/_search
+GET eik_search/_search
 {
   "size": 0,
   "aggs": {
@@ -239,7 +245,7 @@ GET anita3/_search
 ```
 # Get top 10 file types and how many of each
 
-GET anita3/_search
+GET eik_search/_search
 {
   "size": 0,
   "aggs": {
