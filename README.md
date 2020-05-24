@@ -7,10 +7,8 @@ Have a simple way to spin up a dev environment for developing search for eik.dev
 
 The larger goal is to then develop search for eik.dev
 
-Work in progress...
-
 Current status: 
-1. DONE: Spin up Elasticsearch and Kibana quickly
+1. DONE: Spin up Elasticsearch and Kibana quickly locally
 2. DONE: Add an index containing hardcoded data for use while developing search
 3. DONE: Run search queries, install and run node.js app that currently returns unformatted match_all search from index
 4. WORK IN PROGRESS: Develop search for eik.dev
@@ -26,7 +24,7 @@ Current status:
 
 ## Steps to take
 
-1. Run docker-compose to quickly spin up Elasticsearch and Kibana
+1. Run docker-compose to quickly spin up Elasticsearch and Kibana locally
 2. Verify Elasticsearch and Kibana are running locally
 3. TODO: Optional: Become familiar with useful Docker commands
 4. Learn how to run a command in Kibana Dev Tools
@@ -38,7 +36,7 @@ Current status:
 10. Search app tests: run the tests
 
 
-### Run docker-compose to quickly spin up Elasticsearch and Kibana
+### Run docker-compose to quickly spin up Elasticsearch and Kibana locally
 
 Spin up a containerised instance of Elasticsearch and Kibana
 
