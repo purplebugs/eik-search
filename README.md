@@ -9,7 +9,11 @@ The larger goal is to then develop search for eik.dev
 
 Work in progress...
 
-Current status: Ability to spin up Elasticsearch and Kibana quickly, add an index containing hardcoded data for use while developing search, run search queries, install and run node.js app that currently returns unformatted match_all search from index
+Current status: 
+1. DONE: Spin up Elasticsearch and Kibana quickly
+2. DONE: Add an index containing hardcoded data for use while developing search
+3. DONE: Run search queries, install and run node.js app that currently returns unformatted match_all search from index
+4. WORK IN PROGRESS: Develop search for eik.dev
 
 
 ## Pre-Requisites
