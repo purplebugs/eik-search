@@ -302,10 +302,12 @@ http://localhost:3000/status
 http://localhost:3000/search
 
 # Returns search on author name, name, org or scope for one or more strings passed into the query string parameter
+
+## Example 1
 http://localhost:3000/search2?q="jane,some"
 
-# Can also pass in search params as follows (example):
-http://localhost:3000/search2?q=some-package%20example.com%20under_score%20123numeric%20thingy
+## Example 2
+http://localhost:3000/search2?q=some-package,example.com,under_score,123numeric,thingy
 ```
 
 ### Search app tests: run tests
