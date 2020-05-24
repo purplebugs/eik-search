@@ -15,7 +15,7 @@ networks:
 services:
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: eik-elasticsearch
     environment:
       - node.name=eik-elasticsearch
@@ -34,7 +34,7 @@ services:
       - elastic
 
   kibana: 
-    image: docker.elastic.co/kibana/kibana:7.5.0
+    image: docker.elastic.co/kibana/kibana:7.6.0
     container_name: eik-kibana
     ports:
       - 5601:5601
